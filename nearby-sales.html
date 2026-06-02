@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天麒宏竹 周邊2公里在售物件比對報告｜2026年6月</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5a8c;
+    --accent: #e07b39;
+    --accent-light: #f5a623;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --border: #d0d7e0;
+    --text: #2c3e50;
+    --muted: #6b7a8d;
+    --warn: #c0392b;
+    --green: #27ae60;
+    --yellow: #f39c12;
+    --blue-bg: #eaf1fb;
+    --subject-bg: #fff8f0;
+    --subject-border: #e07b39;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans TC','Microsoft JhengHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+
+  header { background: linear-gradient(135deg, #0d1b3e 0%, var(--primary) 60%, var(--primary-light) 100%); color: white; padding: 40px 24px 36px; text-align: center; position: relative; }
+  header::before { content:''; position:absolute; inset:0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23e07b39' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  header .badge { display:inline-block; background:var(--accent); color:white; font-size:12px; font-weight:700; letter-spacing:2px; padding:4px 14px; border-radius:20px; margin-bottom:14px; }
+  header h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight:900; margin-bottom:6px; position:relative; }
+  header h1 span { color: var(--accent-light); }
+  header .subtitle { font-size:14px; color:rgba(255,255,255,0.7); position:relative; }
+
+  .container { max-width:1140px; margin:0 auto; padding:24px 16px; }
+
+  .meta-bar { display:flex; flex-wrap:wrap; gap:12px; background:white; border-radius:8px; padding:16px 20px; margin-bottom:24px; border-left:4px solid var(--accent); font-size:0.88rem; }
+  .meta-item { display:flex; gap:6px; align-items:center; color:var(--muted); }
+  .meta-item strong { color:var(--text); }
+
+  .section-title { font-size:1.15rem; font-weight:700; color:var(--primary); border-bottom:2px solid var(--accent); padding-bottom:6px; margin:28px 0 16px; display:flex; align-items:center; gap:8px; }
+  .section-title::before { content:''; display:inline-block; width:4px; height:18px; background:var(--accent); border-radius:2px; }
+
+  /* KPI 卡片 */
+  .kpi-row { display:grid; grid-template-columns:repeat(auto-fill, minmax(165px,1fr)); gap:14px; margin-bottom:24px; }
+  .kpi-card { background:white; border-radius:10px; padding:16px 18px; border-top:3px solid var(--primary); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  .kpi-card .label { font-size:0.78rem; color:var(--muted); margin-bottom:4px; }
+  .kpi-card .number { font-size:1.3rem; font-weight:800; color:var(--primary); }
+  .kpi-card .sub { font-size:0.76rem; color:var(--muted); margin-top:3px; }
+  .kpi-card.accent { border-top-color:var(--accent); }
+  .kpi-card.green { border-top-color:var(--green); }
+  .kpi-card.yellow { border-top-color:var(--yellow); }
+
+  /* 主體卡 */
+  .subject-card { background:var(--subject-bg); border-radius:10px; border:2px solid var(--subject-border); padding:20px 24px; margin-bottom:24px; }
+  .subject-card h2 { color:var(--accent); font-size:1.1rem; margin-bottom:12px; }
+  .info-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:10px; }
+  .info-item { background:white; border-radius:6px; padding:10px 14px; border:1px solid #f0e6da; }
+  .info-item .label { font-size:0.76rem; color:var(--muted); margin-bottom:2px; }
+  .info-item .value { font-weight:600; font-size:0.95rem; }
+  .info-item .value.accent { color:var(--accent); }
+
+  /* 表格 */
+  .table-wrap { overflow-x:auto; border-radius:8px; border:1px solid var(--border); margin-bottom:12px; }
+  table { width:100%; border-collapse:collapse; font-size:0.84rem; }
+  th { background:var(--primary); color:white; padding:10px 10px; text-align:left; white-space:nowrap; font-size:0.82rem; }
+  td { padding:9px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr:nth-child(even) td { background:#f8fafc; }
+  .subject-row td { background:var(--subject-bg) !important; font-weight:600; border-left:3px solid var(--accent); }
+
+  .tag { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.73rem; font-weight:600; white-space:nowrap; }
+  .tag-subject { background:#fff0e0; color:var(--accent); border:1px solid #f5c99a; }
+  .tag-low { background:#e8f8ef; color:var(--green); border:1px solid #a0d9b8; }
+  .tag-mid { background:#eaf1fb; color:var(--primary); border:1px solid #b0c8e8; }
+  .tag-high { background:#fdecea; color:var(--warn); border:1px solid #e8a5a0; }
+  .tag-new { background:#e8f0fe; color:#1565c0; border:1px solid #90b4e0; }
+
+  /* 長條圖 */
+  .bar-chart { margin-bottom:24px; }
+  .bar-row { display:flex; align-items:center; margin-bottom:8px; gap:10px; }
+  .bar-label { width:140px; font-size:0.82rem; text-align:right; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .bar-track { flex:1; height:26px; background:#edf2f7; border-radius:4px; position:relative; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:4px; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; font-size:0.76rem; font-weight:700; color:white; min-width:40px; transition:width 0.5s; }
+  .bar-fill.subject { background:linear-gradient(90deg, var(--accent), #f5a623); }
+  .bar-fill.compare { background:linear-gradient(90deg, var(--primary), var(--primary-light)); }
+  .bar-value { width:75px; font-size:0.82rem; font-weight:600; text-align:left; flex-shrink:0; }
+
+  /* 分析注記 */
+  .note-box { border-left:4px solid var(--accent); border-radius:0 8px 8px 0; padding:14px 18px; font-size:0.88rem; margin-bottom:16px; line-height:1.7; }
+  .note-box.info { background:#eaf1fb; border-left-color:var(--primary); }
+  .note-box.warn { background:#fdecea; border-left-color:var(--warn); }
+  .note-box.green { background:#e8f8ef; border-left-color:var(--green); }
+  .note-box.orange { background:#fff8f0; border-left-color:var(--accent); }
+  .note-box strong { display:block; margin-bottom:4px; }
+
+  /* 社區比較卡 */
+  .comm-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:14px; margin-bottom:16px; }
+  .comm-card { background:white; border-radius:8px; border:1px solid var(--border); padding:14px 16px; position:relative; }
+  .comm-card.subject { border:2px solid var(--accent); background:var(--subject-bg); }
+  .comm-card h4 { color:var(--primary); font-size:0.92rem; margin-bottom:8px; }
+  .comm-card .price { font-size:1.15rem; font-weight:800; color:var(--accent); margin-bottom:6px; }
+  .comm-card p { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+  .comm-card .badge-corner { position:absolute; top:10px; right:10px; }
+
+  /* 散佈圖表格 */
+  .scatter-table { margin-bottom:24px; }
+  .scatter-table td.price-cell { font-weight:700; }
+  .scatter-table .highlight { background:var(--subject-bg); }
+
+  /* 資料來源 */
+  .sources { margin-top:32px; padding:16px 20px; background:white; border-radius:8px; border:1px solid var(--border); font-size:0.82rem; }
+  .sources h3 { color:var(--muted); margin-bottom:10px; font-size:0.88rem; }
+  .sources ul { list-style:disc; padding-left:20px; }
+  .sources li { margin-bottom:4px; }
+  .sources a { color:var(--primary); text-decoration:none; }
+  .sources a:hover { text-decoration:underline; }
+
+  footer { text-align:center; padding:24px; color:var(--muted); font-size:0.8rem; }
+
+  /* 雷達評分 */
+  .score-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:16px; margin-bottom:24px; }
+  .score-card { background:white; border-radius:10px; padding:16px 20px; border:1px solid var(--border); }
+  .score-card h4 { font-size:0.92rem; color:var(--primary); margin-bottom:10px; }
+  .score-row { display:flex; align-items:center; margin-bottom:6px; gap:8px; }
+  .score-label { width:70px; font-size:0.8rem; color:var(--muted); }
+  .score-bar-bg { flex:1; height:10px; background:#edf2f7; border-radius:5px; overflow:hidden; }
+  .score-bar { height:100%; border-radius:5px; }
+  .score-bar.s5 { width:100%; background:var(--green); }
+  .score-bar.s4 { width:80%; background:#66bb6a; }
+  .score-bar.s3 { width:60%; background:var(--yellow); }
+  .score-bar.s2 { width:40%; background:#ff9800; }
+  .score-bar.s1 { width:20%; background:var(--warn); }
+  .score-num { width:24px; font-size:0.8rem; font-weight:700; text-align:center; }
+
+  @media(max-width:700px) {
+    .bar-label { width:100px; font-size:0.75rem; }
+    .info-grid { grid-template-columns:repeat(2,1fr); }
+    .comm-grid { grid-template-columns:1fr; }
+    table { font-size:0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">MARKET COMPARISON</div>
+  <h1><span>天麒宏竹</span> 周邊2公里在售物件比對報告</h1>
+  <p>青埔 A19 桃園體育園區｜2026 年 6 月網路登載在售物件</p>
+</header>
+
+<div class="container">
+
+  <!-- Meta Bar -->
+  <div class="meta-bar">
+    <div class="meta-item">報告日期：<strong>2026-06-02</strong></div>
+    <div class="meta-item">比對範圍：<strong>天麒宏竹周邊 2 公里</strong></div>
+    <div class="meta-item">物件條件：<strong>兩房｜含車位｜電梯大樓</strong></div>
+    <div class="meta-item">資料來源：<strong>591 / 信義 / 永慶 / 5168</strong></div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card accent">
+      <div class="label">主體物件售價</div>
+      <div class="number">1,500-2,000萬</div>
+      <div class="sub">天麒宏竹 兩房含車位</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">比較物件數</div>
+      <div class="number">15 筆</div>
+      <div class="sub">2公里內兩房在售</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">周邊兩房均價</div>
+      <div class="number">45.3 萬/坪</div>
+      <div class="sub">15筆平均（含車位坪數）</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="label">總價範圍</div>
+      <div class="number">1,298-2,980萬</div>
+      <div class="sub">最低～最高</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">社區均價排名</div>
+      <div class="number">#1 / 13社區</div>
+      <div class="sub">天麒宏竹 56.9萬/坪</div>
+    </div>
+  </div>
+
+  <!-- 主體物件 -->
+  <h2 class="section-title">主體物件：天麒宏竹</h2>
+  <div class="subject-card">
+    <h2>天麒宏竹 — 青埔A19學區宅大兩房含車位 <span class="tag tag-subject">比對基準</span></h2>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">地址</div><div class="value">桃園市中壢區永信路285號</div></div>
+      <div class="info-item"><div class="label">售價</div><div class="value accent">1,500～2,000 萬（含車位）</div></div>
+      <div class="info-item"><div class="label">格局</div><div class="value">2房｜雙陽台＋露台</div></div>
+      <div class="info-item"><div class="label">登記坪數</div><div class="value">約 37～38 坪（含車位）</div></div>
+      <div class="info-item"><div class="label">公設比</div><div class="value">33%</div></div>
+      <div class="info-item"><div class="label">屋齡</div><div class="value">約 1 年（全新未入住）</div></div>
+      <div class="info-item"><div class="label">樓高</div><div class="value">地上10層／地下2層</div></div>
+      <div class="info-item"><div class="label">車位</div><div class="value">平面式（含在售價）</div></div>
+      <div class="info-item"><div class="label">管理費</div><div class="value">2,549 元/月</div></div>
+      <div class="info-item"><div class="label">總戶數</div><div class="value">46 戶（住40＋店6）</div></div>
+      <div class="info-item"><div class="label">社區均價</div><div class="value accent">56.9 萬/坪（近一年）</div></div>
+      <div class="info-item"><div class="label">特色</div><div class="value">A19捷運5分鐘、青埔國中學區</div></div>
+    </div>
+  </div>
+
+  <!-- 比較物件總覽表 -->
+  <h2 class="section-title">周邊 2 公里內兩房在售物件一覽（2026年6月）</h2>
+  <div class="note-box info">
+    <strong>篩選條件說明</strong>
+    以天麒宏竹為圓心，搜尋半徑 2 公里內、格局為兩房、電梯大樓的在售物件。資料來自 591 售屋網、5168 實價登錄比價王、信義房屋、永慶房仲網等平台。坪數含公設與車位（如有），單價以「總價÷登記坪數」計算，與實價登錄之「不含車位單價」不同，請留意。
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>社區</th>
+          <th>路段</th>
+          <th>售價（萬）</th>
+          <th>坪數</th>
+          <th>格局</th>
+          <th>樓層</th>
+          <th>屋齡</th>
+          <th>車位</th>
+          <th>概估單價</th>
+          <th>價差</th>
+          <th>來源</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="subject-row">
+          <td>★</td>
+          <td>天麒宏竹</td>
+          <td>永信路</td>
+          <td>1,500-2,000</td>
+          <td>37.5</td>
+          <td>2房</td>
+          <td>—</td>
+          <td>1年</td>
+          <td>平面（含）</td>
+          <td>56.9萬/坪</td>
+          <td><span class="tag tag-subject">基準</span></td>
+          <td>591</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>新森活 A</td>
+          <td>永昌路</td>
+          <td>1,298</td>
+          <td>34.30</td>
+          <td>2房1廳1衛</td>
+          <td>14/15</td>
+          <td>5.2年</td>
+          <td>平面（含）</td>
+          <td>37.8萬</td>
+          <td><span class="tag tag-low">-34%</span></td>
+          <td>5168</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>新森活 B</td>
+          <td>永昌路</td>
+          <td>1,350</td>
+          <td>33.94</td>
+          <td>2房2廳1衛</td>
+          <td>12/15</td>
+          <td>5.1年</td>
+          <td>無</td>
+          <td>39.8萬</td>
+          <td><span class="tag tag-low">-30%</span></td>
+          <td>5168</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>新森活 C</td>
+          <td>永昌路</td>
+          <td>1,438</td>
+          <td>33.72</td>
+          <td>2房2廳1衛</td>
+          <td>13/15</td>
+          <td>5.1年</td>
+          <td>平面（含）</td>
+          <td>42.7萬</td>
+          <td><span class="tag tag-low">-25%</span></td>
+          <td>信義</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>昆旺青茵悅</td>
+          <td>聖德路一段</td>
+          <td>1,598</td>
+          <td>42.19</td>
+          <td>2房2廳2衛</td>
+          <td>11/13</td>
+          <td>1.7年</td>
+          <td>平面（含）</td>
+          <td>37.9萬</td>
+          <td><span class="tag tag-low">-33%</span></td>
+          <td>5168</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>潤隆國家大院</td>
+          <td>青峰路一段</td>
+          <td>1,398</td>
+          <td>30.25</td>
+          <td>2房2廳1衛</td>
+          <td>14/15</td>
+          <td>3.0年</td>
+          <td>平面（含）</td>
+          <td>46.2萬</td>
+          <td><span class="tag tag-low">-19%</span></td>
+          <td>信義</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>良茂詠恆恆美館</td>
+          <td>青商路</td>
+          <td>1,488</td>
+          <td>29.70</td>
+          <td>2房2廳1衛</td>
+          <td>14/15</td>
+          <td>4.8年</td>
+          <td>平面（含）</td>
+          <td>50.1萬</td>
+          <td><span class="tag tag-mid">-12%</span></td>
+          <td>永慶</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>明日禾禾</td>
+          <td>領航南路一段</td>
+          <td>1,528</td>
+          <td>33.28</td>
+          <td>2房2廳1衛</td>
+          <td>6/14</td>
+          <td>7.6年</td>
+          <td>平面（含）</td>
+          <td>45.9萬</td>
+          <td><span class="tag tag-low">-19%</span></td>
+          <td>信義</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>順儷米蘭達</td>
+          <td>洽溪路</td>
+          <td>1,628</td>
+          <td>39.54</td>
+          <td>2房2廳1衛</td>
+          <td>4/14</td>
+          <td>8.8年</td>
+          <td>平面（含）</td>
+          <td>41.2萬</td>
+          <td><span class="tag tag-low">-28%</span></td>
+          <td>信義</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>青之上河</td>
+          <td>文發路</td>
+          <td>1,688</td>
+          <td>38.06</td>
+          <td>2房2廳1衛</td>
+          <td>3/13</td>
+          <td>4.0年</td>
+          <td>平面（含）</td>
+          <td>44.4萬</td>
+          <td><span class="tag tag-low">-22%</span></td>
+          <td>5168</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>青埔菁美學</td>
+          <td>青埔八街</td>
+          <td>1,798</td>
+          <td>34.43</td>
+          <td>2房2廳1衛</td>
+          <td>10/15</td>
+          <td>2.3年</td>
+          <td>平面（含）</td>
+          <td>52.2萬</td>
+          <td><span class="tag tag-mid">-8%</span></td>
+          <td>永慶</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>成家大璽</td>
+          <td>領航南路四段</td>
+          <td>1,788</td>
+          <td>35.23</td>
+          <td>2房2廳1衛</td>
+          <td>9/14</td>
+          <td>6.9年</td>
+          <td>平面（含）</td>
+          <td>50.8萬</td>
+          <td><span class="tag tag-mid">-11%</span></td>
+          <td>信義</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>明日苑7國都苑</td>
+          <td>永裕路</td>
+          <td>2,198</td>
+          <td>48.46</td>
+          <td>2房2廳2衛</td>
+          <td>10/22</td>
+          <td>9.8年</td>
+          <td>平面（含）</td>
+          <td>45.4萬</td>
+          <td><span class="tag tag-low">-20%</span></td>
+          <td>5168</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>A19森學園</td>
+          <td>領航北路二段</td>
+          <td>2,260</td>
+          <td>48.15</td>
+          <td>2房2廳2衛</td>
+          <td>4/13</td>
+          <td>5.1年</td>
+          <td>平面（含）</td>
+          <td>46.9萬</td>
+          <td><span class="tag tag-mid">-18%</span></td>
+          <td>信義</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>威均園舞曲</td>
+          <td>永能路</td>
+          <td>2,450</td>
+          <td>49.45</td>
+          <td>2房2廳2衛</td>
+          <td>27/27</td>
+          <td>新成屋</td>
+          <td>平面（含）</td>
+          <td>49.5萬</td>
+          <td><span class="tag tag-mid">-13%</span></td>
+          <td>5168</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>冠德青璞匯</td>
+          <td>高鐵南路二段</td>
+          <td>2,980</td>
+          <td>51.48</td>
+          <td>2房2廳2衛</td>
+          <td>10/25</td>
+          <td>7.2年</td>
+          <td>平面（含）</td>
+          <td>57.9萬</td>
+          <td><span class="tag tag-high">+2%</span></td>
+          <td>5168</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.8rem; color:var(--muted); margin-bottom:24px;">
+    ※ 概估單價＝開價總價 ÷ 登記坪數（含車位坪數），與實價登錄「扣除車位單價」不同。天麒宏竹社區均價 56.9 萬/坪為實價登錄近一年不含車位數據。<br>
+    ※ 價差以天麒宏竹社區均價 56.9 萬/坪為基準計算。
+  </p>
+
+  <!-- 單價長條圖 -->
+  <h2 class="section-title">每坪概估單價比較（含車位坪數）</h2>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label" style="font-weight:700; color:var(--accent);">天麒宏竹 ★</div>
+      <div class="bar-track"><div class="bar-fill subject" style="width:98%;">56.9</div></div>
+      <div class="bar-value" style="color:var(--accent);">56.9萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">冠德青璞匯</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:100%;">57.9</div></div>
+      <div class="bar-value">57.9萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">青埔菁美學</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:90%;">52.2</div></div>
+      <div class="bar-value">52.2萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">成家大璽</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:88%;">50.8</div></div>
+      <div class="bar-value">50.8萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">良茂詠恆恆美館</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:87%;">50.1</div></div>
+      <div class="bar-value">50.1萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">威均園舞曲</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:85%;">49.5</div></div>
+      <div class="bar-value">49.5萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">A19森學園</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:81%;">46.9</div></div>
+      <div class="bar-value">46.9萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">潤隆國家大院</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:80%;">46.2</div></div>
+      <div class="bar-value">46.2萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">明日禾禾</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:79%;">45.9</div></div>
+      <div class="bar-value">45.9萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">明日苑7國都苑</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:78%;">45.4</div></div>
+      <div class="bar-value">45.4萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">青之上河</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:77%;">44.4</div></div>
+      <div class="bar-value">44.4萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">新森活 C</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:74%;">42.7</div></div>
+      <div class="bar-value">42.7萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">順儷米蘭達</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:71%;">41.2</div></div>
+      <div class="bar-value">41.2萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">新森活 B</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:69%;">39.8</div></div>
+      <div class="bar-value">39.8萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">昆旺青茵悅</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:65%;">37.9</div></div>
+      <div class="bar-value">37.9萬</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">新森活 A</div>
+      <div class="bar-track"><div class="bar-fill compare" style="width:65%;">37.8</div></div>
+      <div class="bar-value">37.8萬</div>
+    </div>
+  </div>
+
+  <!-- 總價帶分佈 -->
+  <h2 class="section-title">總價帶分佈分析</h2>
+  <div class="kpi-row">
+    <div class="kpi-card green">
+      <div class="label">1,200-1,500萬</div>
+      <div class="number">5 筆</div>
+      <div class="sub">新森活(3)、潤隆國家大院、良茂詠恆</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">1,500-1,800萬</div>
+      <div class="number">5 筆</div>
+      <div class="sub">天麒宏竹(下限)、昆旺青茵悅、明日禾禾、順儷米蘭達、青之上河</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="label">1,800-2,300萬</div>
+      <div class="number">4 筆</div>
+      <div class="sub">天麒宏竹(上限)、菁美學、成家大璽、明日苑7、A19森學園</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="label">2,300萬以上</div>
+      <div class="number">2 筆</div>
+      <div class="sub">威均園舞曲、冠德青璞匯</div>
+    </div>
+  </div>
+
+  <!-- 坪數 vs 總價散佈分析 -->
+  <h2 class="section-title">坪數 × 總價對照（買方視角）</h2>
+  <div class="table-wrap scatter-table">
+    <table>
+      <thead>
+        <tr>
+          <th>總價帶</th>
+          <th>30坪以下</th>
+          <th>30～38坪</th>
+          <th>38～45坪</th>
+          <th>45坪以上</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700;">1,200-1,500萬</td>
+          <td>良茂詠恆 29.7坪<br>潤隆國家大院 30.25坪</td>
+          <td>新森活 A 34.3坪<br>新森活 B 33.94坪<br>新森活 C 33.72坪</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">1,500-1,800萬</td>
+          <td>—</td>
+          <td class="highlight">明日禾禾 33.28坪<br><strong style="color:var(--accent);">★ 天麒宏竹 ~37.5坪</strong></td>
+          <td>順儷米蘭達 39.54坪<br>青之上河 38.06坪<br>昆旺青茵悅 42.19坪</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">1,800-2,500萬</td>
+          <td>—</td>
+          <td>菁美學 34.43坪<br>成家大璽 35.23坪</td>
+          <td>—</td>
+          <td>明日苑7 48.46坪<br>A19森學園 48.15坪<br>威均園舞曲 49.45坪</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;">2,500萬以上</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>冠德青璞匯 51.48坪</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note-box orange">
+    <strong>買方選擇分析</strong>
+    天麒宏竹落在「1,500-1,800萬 × 30-38坪」區間。同區間直接競品為<strong>明日禾禾（1,528萬/33.28坪）</strong>，但明日禾禾屋齡 7.6 年，天麒宏竹僅 1 年，新屋溢價合理。<br>
+    若買方預算卡在 1,500 萬以下，<strong>新森活（1,298-1,438萬）</strong>是最大競爭對手，勝在總價低且靠近 A18 高鐵站。<br>
+    若買方願意加碼到 1,800 萬以上，<strong>菁美學（1,798萬/34.43坪/2.3年）</strong>和<strong>成家大璽（1,788萬/35.23坪）</strong>會分流客群。
+  </div>
+
+  <!-- 同級競品深度比較 -->
+  <h2 class="section-title">同級競品深度比較（總價 1,400-1,800萬 × 兩房）</h2>
+  <div class="comm-grid">
+    <div class="comm-card subject">
+      <div class="badge-corner"><span class="tag tag-subject">主體</span></div>
+      <h4>天麒宏竹</h4>
+      <div class="price">1,500-2,000 萬</div>
+      <p>
+        永信路｜37.5坪｜2房｜1年<br>
+        社區均價 56.9萬/坪｜管理費 2,549/月<br>
+        全新未入住｜雙陽台+露台｜A19 捷運5分鐘
+      </p>
+    </div>
+    <div class="comm-card">
+      <div class="badge-corner"><span class="tag tag-new">低屋齡</span></div>
+      <h4>昆旺青茵悅</h4>
+      <div class="price">1,598 萬</div>
+      <p>
+        聖德路一段｜42.19坪｜2房2廳2衛｜1.7年<br>
+        含車位｜37.9萬/坪<br>
+        屋齡相近、坪數大但單價低 34%
+      </p>
+    </div>
+    <div class="comm-card">
+      <h4>青之上河</h4>
+      <div class="price">1,688 萬</div>
+      <p>
+        文發路｜38.06坪｜2房2廳1衛｜4.0年<br>
+        含車位｜44.4萬/坪｜水岸景觀宅<br>
+        坪數最接近天麒宏竹
+      </p>
+    </div>
+    <div class="comm-card">
+      <h4>明日禾禾</h4>
+      <div class="price">1,528 萬</div>
+      <p>
+        領航南路一段｜33.28坪｜2房2廳1衛｜7.6年<br>
+        含車位｜45.9萬/坪<br>
+        總價低但屋齡偏高
+      </p>
+    </div>
+    <div class="comm-card">
+      <h4>順儷米蘭達</h4>
+      <div class="price">1,628 萬</div>
+      <p>
+        洽溪路｜39.54坪｜2房2廳1衛｜8.8年<br>
+        含車位｜41.2萬/坪<br>
+        坪數大、單價低，但屋齡最高
+      </p>
+    </div>
+    <div class="comm-card">
+      <div class="badge-corner"><span class="tag tag-new">低屋齡</span></div>
+      <h4>青埔菁美學</h4>
+      <div class="price">1,798 萬</div>
+      <p>
+        青埔八街｜34.43坪｜2房2廳1衛｜2.3年<br>
+        含車位｜52.2萬/坪<br>
+        屋齡近、單價也高，品牌社區
+      </p>
+    </div>
+  </div>
+
+  <!-- 競爭力評分 -->
+  <h2 class="section-title">天麒宏竹 vs 主要競品 — 競爭力評分</h2>
+  <div class="score-grid">
+    <div class="score-card">
+      <h4>天麒宏竹 <span class="tag tag-subject">主體</span></h4>
+      <div class="score-row"><div class="score-label">屋齡新</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+      <div class="score-row"><div class="score-label">交通</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+      <div class="score-row"><div class="score-label">學區</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+      <div class="score-row"><div class="score-label">總價親和</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">坪效</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">社區規模</div><div class="score-bar-bg"><div class="score-bar s2"></div></div><div class="score-num">2</div></div>
+    </div>
+    <div class="score-card">
+      <h4>昆旺青茵悅</h4>
+      <div class="score-row"><div class="score-label">屋齡新</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+      <div class="score-row"><div class="score-label">交通</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">學區</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">總價親和</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">坪效</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+      <div class="score-row"><div class="score-label">社區規模</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+    </div>
+    <div class="score-card">
+      <h4>青之上河</h4>
+      <div class="score-row"><div class="score-label">屋齡新</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">交通</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">學區</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">總價親和</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">坪效</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">社區規模</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+    </div>
+    <div class="score-card">
+      <h4>新森活</h4>
+      <div class="score-row"><div class="score-label">屋齡新</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">交通</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">學區</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+      <div class="score-row"><div class="score-label">總價親和</div><div class="score-bar-bg"><div class="score-bar s5"></div></div><div class="score-num">5</div></div>
+      <div class="score-row"><div class="score-label">坪效</div><div class="score-bar-bg"><div class="score-bar s4"></div></div><div class="score-num">4</div></div>
+      <div class="score-row"><div class="score-label">社區規模</div><div class="score-bar-bg"><div class="score-bar s3"></div></div><div class="score-num">3</div></div>
+    </div>
+  </div>
+
+  <!-- 市場觀察 -->
+  <h2 class="section-title">市場觀察與定價建議</h2>
+
+  <div class="note-box green">
+    <strong>天麒宏竹的核心優勢</strong>
+    在 15 筆比較物件中，天麒宏竹是<strong>屋齡最新（1年）</strong>、<strong>距 A19 捷運最近</strong>、<strong>青埔國中學區第一排</strong>的物件。「全新未入住」在二手市場中極為稀缺，這是支撐溢價的關鍵因素。
+  </div>
+
+  <div class="note-box warn">
+    <strong>需留意的風險</strong>
+    <ul style="margin-top:6px; padding-left:18px;">
+      <li><strong>單價偏高：</strong>社區均價 56.9 萬/坪，在 16 筆物件中僅次於冠德青璞匯（57.9萬），比周邊平均高出約 25%</li>
+      <li><strong>小社區管理費偏高：</strong>46 戶分攤公設維護，管理費 95 元/坪/月，高於大社區</li>
+      <li><strong>一層五戶：</strong>對 10 層華廈而言偏密，電梯等候時間較長</li>
+      <li><strong>競品多：</strong>2 公里內有 15 筆兩房在售，買方選擇不少</li>
+    </ul>
+  </div>
+
+  <div class="note-box info">
+    <strong>定價策略建議</strong>
+    <ul style="margin-top:6px; padding-left:18px;">
+      <li><strong>合理開價：</strong>1,700～1,800 萬（對應 45～48 萬/坪含車位），買方可接受的溢價幅度</li>
+      <li><strong>甜蜜成交區：</strong>1,650～1,750 萬，此價位較競品高約 5-10%，但「全新+學區+捷運」三重加持可支撐</li>
+      <li><strong>底價：</strong>1,550 萬以下將觸及昆旺青茵悅（1,598萬/42坪/1.7年）的競爭帶，需確認是否值得</li>
+      <li><strong>若開 2,000 萬：</strong>超過明日苑7國都苑（2,198萬/48坪）坪效，買方可能轉向大坪數物件</li>
+    </ul>
+  </div>
+
+  <!-- 周邊社區均價排行 -->
+  <h2 class="section-title">周邊社區近一年實價登錄均價排行</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>社區</th>
+          <th>近一年均價（萬/坪）</th>
+          <th>屋齡</th>
+          <th>總戶數</th>
+          <th>說明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="subject-row">
+          <td>1</td>
+          <td>天麒宏竹 ★</td>
+          <td>56.9</td>
+          <td>1年</td>
+          <td>46戶</td>
+          <td>A19學區宅，全新華廈</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>誠鑫19</td>
+          <td>59.9</td>
+          <td>預售</td>
+          <td>68戶</td>
+          <td>A19新建案，2026Q2完工</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>新潤明日禾禾</td>
+          <td>53.0</td>
+          <td>7.6年</td>
+          <td>—</td>
+          <td>A19領航南路，大社區</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>合雄天好韻</td>
+          <td>52.7</td>
+          <td>2年</td>
+          <td>85戶</td>
+          <td>永順街，天麒宏竹鄰居</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>誠佳悠閱</td>
+          <td>49.5</td>
+          <td>1年</td>
+          <td>127戶</td>
+          <td>民權路，大型社區</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>威均園舞曲</td>
+          <td>49.5</td>
+          <td>新成屋</td>
+          <td>—</td>
+          <td>永能路，頂樓景觀</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>新潤明日朗朗</td>
+          <td>47.6</td>
+          <td>—</td>
+          <td>—</td>
+          <td>A19大型社區</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>青之上河</td>
+          <td>45.7</td>
+          <td>4年</td>
+          <td>306戶</td>
+          <td>文發路，水岸社區</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>明日苑7國都苑</td>
+          <td>45.4</td>
+          <td>9.8年</td>
+          <td>—</td>
+          <td>永裕路，大型社區</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>新森活</td>
+          <td>39.8</td>
+          <td>5.1年</td>
+          <td>—</td>
+          <td>永昌路，近A18高鐵</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>昆旺青茵悅</td>
+          <td>37.9</td>
+          <td>1.7年</td>
+          <td>—</td>
+          <td>聖德路，近月眉</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>順儷米蘭達</td>
+          <td>41.2</td>
+          <td>8.8年</td>
+          <td>—</td>
+          <td>洽溪路，近A18</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>東京線上</td>
+          <td>32.6</td>
+          <td>12.3年</td>
+          <td>—</td>
+          <td>領航北路二段，老社區</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 結論 -->
+  <h2 class="section-title">結論摘要</h2>
+  <div class="kpi-row">
+    <div class="kpi-card accent">
+      <div class="label">天麒宏竹定位</div>
+      <div class="number">高單價新屋</div>
+      <div class="sub">區域內單價排名前2</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">核心競爭力</div>
+      <div class="number">新屋+學區+捷運</div>
+      <div class="sub">三重加持支撐溢價</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">最大威脅</div>
+      <div class="number">新森活 / 昆旺青茵悅</div>
+      <div class="sub">低總價搶走預算型買方</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="label">建議成交價</div>
+      <div class="number">1,650-1,750萬</div>
+      <div class="sub">含車位｜對應 44-47 萬/坪</div>
+    </div>
+  </div>
+
+  <div class="note-box green">
+    <strong>綜合判斷</strong>
+    天麒宏竹在周邊 2 公里的 15 筆兩房在售物件中，擁有<strong>最低屋齡</strong>（1年 vs 平均 5.2年）、<strong>最近捷運距離</strong>（A19站步行5分鐘）、<strong>唯一雙語學區第一排</strong>。這三項優勢足以支撐比區域均價高 15-20% 的溢價。<br><br>
+    但若開價超過 1,800 萬，將進入「大坪數兩房」（48坪級）的競爭帶，買方會拿明日苑7國都苑（2,198萬/48坪）或 A19 森學園（2,260萬/48坪）來比較，天麒宏竹在坪效上將失去優勢。<br><br>
+    <strong>建議開價 1,750 萬、底價 1,550 萬、目標成交 1,650-1,700 萬。</strong>
+  </div>
+
+  <!-- 資料來源 -->
+  <div class="sources">
+    <h3>資料來源與免責聲明</h3>
+    <ul>
+      <li><a href="https://market.591.com.tw/5907957" target="_blank">591 實價登錄 — 天麒宏竹</a></li>
+      <li><a href="https://community.houseprice.tw/building/186134/" target="_blank">5168 實價登錄比價王 — 天麒宏竹</a></li>
+      <li><a href="https://buy.houseprice.tw/list/%E6%A1%83%E5%9C%92%E5%B8%82_city/%E4%B8%AD%E5%A3%A2%E5%8D%80_zip/%E9%9D%92%E5%9F%94A19_kw/" target="_blank">5168 — 青埔A19在售物件</a></li>
+      <li><a href="https://www.sinyi.com.tw/buy/list/%E9%9D%92%E5%9F%94-keyword/Taoyuan-city/320-zip" target="_blank">信義房屋 — 青埔在售物件</a></li>
+      <li><a href="https://buy.yungching.com.tw/list/%E6%A1%83%E5%9C%92%E5%B8%82-%E4%B8%AD%E5%A3%A2%E5%8D%80_c/%E9%9D%92%E5%9F%94_kw" target="_blank">永慶房仲網 — 青埔在售物件</a></li>
+      <li><a href="https://www.leju.com.tw/map/region?mode=price&city=H&area=H320&sid=11115" target="_blank">樂居 — 青埔A19區域房價</a></li>
+      <li><a href="https://sale.591.com.tw/home/house/detail/2/20303052.html" target="_blank">591 售屋 — 天麒宏竹物件頁</a></li>
+    </ul>
+    <p style="margin-top:10px; color:var(--muted);">
+      ※ 本報告資料擷取時間為 2026 年 6 月 2 日，物件售價與狀態可能隨時變動。<br>
+      ※ 概估單價以「開價總價 ÷ 登記坪數」計算，含車位坪數，與實價登錄之「不含車位單價」計算方式不同。<br>
+      ※ 本報告僅供參考，不構成投資建議。實際交易請以最新市場資訊為準。
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  如菓室內裝修有限公司｜天麒宏竹周邊銷售比對報告｜2026-06-02 製作
+</footer>
+
+</body>
+</html>
